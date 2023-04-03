@@ -53,3 +53,38 @@ print('Last Updated:', first_repo['updated_at'])
 # description
 
 print('Description:', first_repo['description'])
+
+#
+
+repos, stars = []
+
+for row in list_of_repos[:10]:
+    repos.append(row['name'])
+    stars.append(row['stargazers_count'])
+
+from plotly.graph_objs import Bar
+from plotly import offline
+
+data = [
+    {
+    'type':'bar',
+    'x': repos,
+    'y': stars,
+    'marker':{
+        'color':'rgb(60,100,150)'
+        'line':{'width':1.5, 'color':'rgb(25,25,25)'}
+    }
+    'opacity':0.6:
+
+    }
+]
+
+my_layout = {
+    'title':'Most Starred Python Repos on GitHub'
+    'xaxis':{'title':'repository'}
+    'yaxis':{'title':'stars'}
+}
+
+fig = {'data':data, 'layout': my_layout}
+
+offline.plot(fig, filename='python_repos.html')
