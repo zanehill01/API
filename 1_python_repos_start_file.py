@@ -56,7 +56,8 @@ print('Description:', first_repo['description'])
 
 #
 
-repos, stars = []
+repos = []
+stars = []
 
 for row in list_of_repos[:10]:
     repos.append(row['name'])
