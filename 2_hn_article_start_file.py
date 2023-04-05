@@ -34,3 +34,17 @@ for row in submission_ids[:21]:
         print('Comments:', response_dict['descendants'])
     except:
         print('Comments: 0')
+
+    from operator import itemgetter
+
+    a_dict = {
+
+        'title':response_dict['title'],
+        'link':'https://={id}.com',
+        'Comments':response_dict['descendants']}
+
+    submission_list = sorted(submission_list, keys=itemgetter('Comments'), reverse=True)
+
+    for d in submission_list:
+        print(f'Title: {d['title']}')
+        print(f'Comments: {d['descendants']}')
